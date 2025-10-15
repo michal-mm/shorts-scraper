@@ -3,7 +3,6 @@ package com.michal_mm.tools.shorts_scraper.config;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.LinkOption;
 import java.nio.file.Path;
 import java.util.Objects;
 import java.util.Properties;
@@ -24,7 +23,7 @@ public class ConfigStore {
         Objects.requireNonNull(fileName, "Provide valid properties file name, example: app.properties");
 
         Path configFile = Path.of(fileName);
-        if (Files.exists(configFile, new LinkOption[0])) {
+        if (Files.exists(configFile)) {
             loadFromFile(configFile, properties);
         }
 
@@ -43,7 +42,7 @@ public class ConfigStore {
         try (BufferedReader is = Files.newBufferedReader(file)) {
             properties.load(is);
         } catch (IOException e) {
-            throw new IllegalStateException("Cannot load properties from: " + String.valueOf(file), e);
+            throw new IllegalStateException("Cannot load properties from: " + file, e);
         }
     }
 }
