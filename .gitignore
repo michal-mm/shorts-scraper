@@ -40,3 +40,6 @@ build/
 
 ### app.properties file with settings should never get into the repo ###
 app.properties
+
+### Maven reduced dependency POM
+dependency-reduced-pom.xml
