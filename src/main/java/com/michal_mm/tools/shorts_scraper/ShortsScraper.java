@@ -33,11 +33,19 @@ public class ShortsScraper {
 
         String channelId = args[0];
 
-        List<VideoItem> shorts = findShorts(channelId);
+        formatResponse(findShorts(channelId), channelId);
+    }
 
-        for (int i=shorts.size()-1; i>=0; i--) {
-            IO.println((shorts.size()-i-1) + ". " + shorts.get(i));
+    private static void formatResponse(List<VideoItem> shorts, String channelId) {
+        IO.println("-------------------------------------------");
+        IO.println("YouTube Shorts for channel: " + channelId);
+        IO.println("-------------------------------------------");
+
+        int n = shorts.size();
+        for (int i=n-1; i>=0; i--) {
+            IO.println((n-i-1) + ". URL:[" + shorts.get(i).url() + "] --- " + shorts.get(i).title());
         }
+        IO.println("-------------------------------------------");
     }
 
     private static List<VideoItem> findShorts(String channelId) throws IOException {
