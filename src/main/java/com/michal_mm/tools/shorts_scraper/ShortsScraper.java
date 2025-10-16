@@ -15,6 +15,8 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.michal_mm.tools.shorts_scraper.json_parser.JsonParser.parseJsonResponse;
+
 public class ShortsScraper {
 
     private static final String YOUTUBE_API_BASE = "https://www.googleapis.com/youtube/v3";
@@ -71,17 +73,7 @@ public class ShortsScraper {
         IO.println("JSON ---- START");
         IO.println(videosJsonStr);
         IO.println("JSON ---- END");
-        ObjectMapper objectMapper = new ObjectMapper();
-        var v = objectMapper.readValue(videosJsonStr, YouTubeResponse.class);
-        IO.println("YU response: " + v);
-        List<VideoItem> shortsDetails = v
-                .items().stream()
-                .map(PlaylistItem::toVideoItem)
-                .toList();
-        IO.println("----");
-        for (VideoItem sd : shortsDetails) {
-            IO.println("~~ " + sd);
-        }
+        parseJsonResponse(videosJsonStr);
 
         conn.disconnect();
     }
