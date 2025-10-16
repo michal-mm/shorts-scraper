@@ -1,9 +1,10 @@
 package com.michal_mm.tools.shorts_scraper;
 
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.michal_mm.tools.shorts_scraper.config.ConfigStore;
+import com.michal_mm.tools.shorts_scraper.model.PlaylistItem;
+import com.michal_mm.tools.shorts_scraper.model.VideoItem;
+import com.michal_mm.tools.shorts_scraper.model.YouTubeResponse;
 import tools.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
@@ -39,7 +40,7 @@ public class ShortsScraper {
         //        urlBuilder.append("/search?part=snippet&channelId=").append(channelId)
         String urlBuilder = YOUTUBE_API_BASE + "/playlistItems?part=snippet&channelId=" + channelId +
                 "&maxResults=" + 3 +
-                // replace first UC from channl Id with "UUSH" to get shorts playlist
+                // replace first UC from channel Id with "UUSH" to get shorts playlist
                 "&playlistId=" + "UUSH" + channelId.substring(2) +
                 "&order=date&type=video&key=" + API_KEY;
 
@@ -72,7 +73,7 @@ public class ShortsScraper {
         IO.println("JSON ---- END");
         ObjectMapper objectMapper = new ObjectMapper();
         var v = objectMapper.readValue(videosJsonStr, YouTubeResponse.class);
-        IO.println("YU respo: " + v);
+        IO.println("YU response: " + v);
         List<VideoItem> shortsDetails = v
                 .items().stream()
                 .map(PlaylistItem::toVideoItem)
@@ -83,25 +84,5 @@ public class ShortsScraper {
         }
 
         conn.disconnect();
-    }
-
-
-    record VideoItem(String videoId, String title){}
-
-    @JsonIgnoreProperties(ignoreUnknown = true)
-    record YouTubeResponse(@JsonProperty("items") List<PlaylistItem> items) {}
-
-    @JsonIgnoreProperties(ignoreUnknown = true)
-    record ResourceId(@JsonProperty("videoId") String videoId){}
-
-    @JsonIgnoreProperties(ignoreUnknown = true)
-    record Snippet(@JsonProperty("title") String title,
-                   @JsonProperty("resourceId") ResourceId resourceId){}
-
-    @JsonIgnoreProperties(ignoreUnknown = true)
-    record PlaylistItem(@JsonProperty("snippet") Snippet snippet) {
-        VideoItem toVideoItem(){
-            return new VideoItem(snippet.resourceId.videoId, snippet.title);
-        }
     }
 }
