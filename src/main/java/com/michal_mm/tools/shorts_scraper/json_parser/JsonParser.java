@@ -1,9 +1,6 @@
 package com.michal_mm.tools.shorts_scraper.json_parser;
 
-import com.michal_mm.tools.shorts_scraper.model.PageToken;
-import com.michal_mm.tools.shorts_scraper.model.PlaylistItem;
-import com.michal_mm.tools.shorts_scraper.model.VideoItem;
-import com.michal_mm.tools.shorts_scraper.model.YouTubeResponse;
+import com.michal_mm.tools.shorts_scraper.model.*;
 import tools.jackson.databind.ObjectMapper;
 
 import java.util.List;
@@ -29,5 +26,17 @@ public class JsonParser {
         var parsedResponse = objectMapper.readValue(videosJsonStr, PageToken.class);
 
         return parsedResponse.nextPageToken();
+    }
+
+    public static String parseChannelIdFromJsonResponse(String jsonResponse) {
+        Objects.requireNonNull(jsonResponse, "JSON output string can't be null to get channelId");
+
+        ObjectMapper objectMapper = new ObjectMapper();
+
+        return objectMapper.readTree(jsonResponse)
+                .findValuesAsString("id")
+                .stream()
+                .findFirst()
+                .orElseThrow();
     }
 }

@@ -10,12 +10,13 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URI;
 import java.net.URL;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-import static com.michal_mm.tools.shorts_scraper.json_parser.JsonParser.parsePageTokenFromJsonResponse;
-import static com.michal_mm.tools.shorts_scraper.json_parser.JsonParser.parseVideosFromJsonResponse;
+import static com.michal_mm.tools.shorts_scraper.json_parser.JsonParser.*;
 
 public class ShortsScraper {
 
@@ -38,10 +39,27 @@ public class ShortsScraper {
 
         String channelId = args[0];
 
+        if (channelId.startsWith("@")) {
+            channelId = getChannelIdFromHandle(channelId);
+        }
+
         List<VideoItem> shorts = fetchAllShorts(channelId);
 
         OutputFormatterFactory.outputFormatter(outputFormatter)
                 .formatResponse(shorts, channelId);
+    }
+
+    private static String getChannelIdFromHandle(String handle) throws IOException {
+        // skip the '@' sign at the beginning of a handle
+        String username = handle.substring(1);
+
+        String url = YOUTUBE_API_BASE + "/channels?part=id&forUsername=" +
+                URLEncoder.encode(username, StandardCharsets.UTF_8) +
+                "&key=" + apiKey;
+
+        String jsonResponse = fetchJson(url);
+
+        return parseChannelIdFromJsonResponse(jsonResponse);
     }
 
     private static List<VideoItem> fetchAllShorts(String channelId) throws IOException {
@@ -93,9 +111,9 @@ public class ShortsScraper {
             throw new RuntimeException("HTTP error code: " + conn.getResponseCode());
         }
 
-        String videosJsonStr = new InputStreamReader(conn.getInputStream()).readAllAsString();
+        String jsonResponse = new InputStreamReader(conn.getInputStream()).readAllAsString();
         conn.disconnect();
 
-        return videosJsonStr;
+        return jsonResponse;
     }
 }
