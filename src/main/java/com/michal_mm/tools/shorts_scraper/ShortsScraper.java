@@ -3,6 +3,7 @@ package com.michal_mm.tools.shorts_scraper;
 
 import com.michal_mm.tools.shorts_scraper.config.ConfigStore;
 import com.michal_mm.tools.shorts_scraper.model.VideoItem;
+import com.michal_mm.tools.shorts_scraper.output.OutputFormatterFactory;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -20,8 +21,10 @@ public class ShortsScraper {
 
     private static final String YOUTUBE_API_BASE = "https://www.googleapis.com/youtube/v3";
     private static final String GOOGLE_API_KEY = "GOOGLE_API_KEY";
+    private static final String OUTPUT_FORMATER_KEY = "output.formatter";
 
     private static String API_KEY;
+    private static String OUTPUT_FORMATTER;
 
     static void main(String[] args) throws IOException {
         initProperties();
@@ -33,19 +36,13 @@ public class ShortsScraper {
 
         String channelId = args[0];
 
-        formatResponse(findShorts(channelId), channelId);
+        List<VideoItem> shorts = findShorts(channelId);
+        formatResponse(shorts, channelId);
     }
 
     private static void formatResponse(List<VideoItem> shorts, String channelId) {
-        IO.println("-------------------------------------------");
-        IO.println("YouTube Shorts for channel: " + channelId);
-        IO.println("-------------------------------------------");
-
-        int n = shorts.size();
-        for (int i=n-1; i>=0; i--) {
-            IO.println((n-i-1) + ". URL:[" + shorts.get(i).url() + "] --- " + shorts.get(i).title());
-        }
-        IO.println("-------------------------------------------");
+        OutputFormatterFactory.outputFormatter(OUTPUT_FORMATTER)
+                .formatResponse(shorts, channelId);
     }
 
     private static List<VideoItem> findShorts(String channelId) throws IOException {
@@ -66,20 +63,20 @@ public class ShortsScraper {
             var response = makeApiRequestAndReturnJsonString(urlListItems);
             pageToken = parsePageTokenFromJsonResponse(response);
             listOfShorts.addAll(buildListOfShorts(response));
-        } while(pageToken != null);
+        } while (pageToken != null);
 
         return listOfShorts;
     }
 
     private static List<VideoItem> buildListOfShorts(String videosJsonStr) {
         Objects.requireNonNull(videosJsonStr, "JSON output from GET call can't be null");
-
         return parseVideosFromJsonResponse(videosJsonStr);
     }
 
     private static void initProperties() {
         ConfigStore.loadConfiguration("app.properties");
         API_KEY = ConfigStore.stringValue(GOOGLE_API_KEY);
+        OUTPUT_FORMATTER = ConfigStore.stringValueOrDefault(OUTPUT_FORMATER_KEY, OutputFormatterFactory.SIMPLE);
     }
 
     private static String makeApiRequestAndReturnJsonString(String urlString) throws IOException {

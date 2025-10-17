@@ -38,6 +38,14 @@ public class ConfigStore {
         }
     }
 
+    public static String stringValueOrDefault(String key, String defValue) {
+        if (CACHE == null) {
+            throw new IllegalStateException("Call ConfigStore.loadConfiguration(aFileName) first");
+        } else {
+            return CACHE.getProperty(key, defValue);
+        }
+    }
+
     private static void loadFromFile(Path file, Properties properties) {
         try (BufferedReader is = Files.newBufferedReader(file)) {
             properties.load(is);
