@@ -1,0 +1,152 @@
+{
+  "kind": "youtube#playlistItemListResponse",
+  "etag": "j-gODq341kwXL_l1daUdsn1vzU4",
+  "nextPageToken": "EAAaHlBUOkNBVWlFRE01T0RGR01qSXpOREpHT1VVd1JVRQ",
+  "items": [
+    {
+      "kind": "youtube#playlistItem",
+      "etag": "srYP_Pv5Y6P6h-tgt5eaoWf1PuU",
+      "id": "VVVTSG1SdFBtZ25RMDRDTVVwU1VxUGZoeFEuU0xDcDZQUFNiVXM",
+      "snippet": {
+        "publishedAt": "2025-10-17T10:00:45Z",
+        "channelId": "UCmRtPmgnQ04CMUpSUqPfhxQ",
+        "title": "What is a distinct stream? - Cracking the Java Coding Interview#javalanguage #javacoding #javatips",
+        "description": "Cracking the #Java #Coding #Interview - Question 300: What is a distinct stream?\nWatch all the questions here: https://youtube.com/playlist?list=PLzzeuFUy_Cngn3JZEXtu6G923y5v8y-8h",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/SLCp6PPSbUs/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/SLCp6PPSbUs/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/SLCp6PPSbUs/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/SLCp6PPSbUs/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          },
+          "maxres": {
+            "url": "https://i.ytimg.com/vi/SLCp6PPSbUs/maxresdefault.jpg",
+            "width": 1280,
+            "height": 720
+          }
+        },
+        "channelTitle": "Java",
+        "playlistId": "UUSHmRtPmgnQ04CMUpSUqPfhxQ",
+        "position": 0,
+        "resourceId": {
+          "kind": "youtube#video",
+          "videoId": "SLCp6PPSbUs"
+        },
+        "videoOwnerChannelTitle": "Java",
+        "videoOwnerChannelId": "UCmRtPmgnQ04CMUpSUqPfhxQ"
+      }
+    },
+    {
+      "kind": "youtube#playlistItem",
+      "etag": "IVt2Xu4fuAE_mYKuqULSyuk_kBE",
+      "id": "VVVTSG1SdFBtZ25RMDRDTVVwU1VxUGZoeFEuZ0d1bU9JTUNQc2c",
+      "snippet": {
+        "publishedAt": "2025-10-15T10:01:21Z",
+        "channelId": "UCmRtPmgnQ04CMUpSUqPfhxQ",
+        "title": "Special Episode 300 - Cracking the Java Coding Interview #javalanguage #javacoding #javatips",
+        "description": "Cracking the #Java #Coding #Interview - Question 300: Special Episode\nWatch all the questions here: https://youtube.com/playlist?list=PLzzeuFUy_Cngn3JZEXtu6G923y5v8y-8h",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/gGumOIMCPsg/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/gGumOIMCPsg/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/gGumOIMCPsg/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/gGumOIMCPsg/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          },
+          "maxres": {
+            "url": "https://i.ytimg.com/vi/gGumOIMCPsg/maxresdefault.jpg",
+            "width": 1280,
+            "height": 720
+          }
+        },
+        "channelTitle": "Java",
+        "playlistId": "UUSHmRtPmgnQ04CMUpSUqPfhxQ",
+        "position": 1,
+        "resourceId": {
+          "kind": "youtube#video",
+          "videoId": "gGumOIMCPsg"
+        },
+        "videoOwnerChannelTitle": "Java",
+        "videoOwnerChannelId": "UCmRtPmgnQ04CMUpSUqPfhxQ"
+      }
+    },
+    {
+      "kind": "youtube#playlistItem",
+      "etag": "ZksaoPc7t3ZWS-I6bc3qTlZ8Zi8",
+      "id": "VVVTSG1SdFBtZ25RMDRDTVVwU1VxUGZoeFEueDNlcWNkbXhFenc",
+      "snippet": {
+        "publishedAt": "2025-10-10T10:01:46Z",
+        "channelId": "UCmRtPmgnQ04CMUpSUqPfhxQ",
+        "title": "What is a cache miss?  - Cracking the Java Coding Interview #javalanguage #javacoding #javatips",
+        "description": "Cracking the #Java #Coding #Interview - Question 299: What is a cache miss? \nWatch all the questions here: https://youtube.com/playlist?list=PLzzeuFUy_Cngn3JZEXtu6G923y5v8y-8h",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/x3eqcdmxEzw/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/x3eqcdmxEzw/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/x3eqcdmxEzw/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/x3eqcdmxEzw/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          },
+          "maxres": {
+            "url": "https://i.ytimg.com/vi/x3eqcdmxEzw/maxresdefault.jpg",
+            "width": 1280,
+            "height": 720
+          }
+        },
+        "channelTitle": "Java",
+        "playlistId": "UUSHmRtPmgnQ04CMUpSUqPfhxQ",
+        "position": 2,
+        "resourceId": {
+          "kind": "youtube#video",
+          "videoId": "x3eqcdmxEzw"
+        },
+        "videoOwnerChannelTitle": "Java",
+        "videoOwnerChannelId": "UCmRtPmgnQ04CMUpSUqPfhxQ"
+      }
+    }
+  ],
+  "pageInfo": {
+    "totalResults": 365,
+    "resultsPerPage": 3
+  }
+}
