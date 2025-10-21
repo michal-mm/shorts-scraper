@@ -7,6 +7,7 @@ import java.util.List;
 public class CsvListOfShorts implements ListOfShorts{
     @Override
     public void formatResponse(List<VideoItem> shorts, String channelId) {
+        IO.println("URL,Title");
         for (VideoItem videoItem : shorts) {
             IO.println(String.join(",",
                     videoItem.url(),
