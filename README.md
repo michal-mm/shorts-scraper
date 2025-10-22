@@ -71,10 +71,10 @@ Next step is to edit the `app.properties` file. You will have to provide Google 
 ```bash
 ./shorts-scraper.sh CHANNEL_ID | CHANNEL_NAME
 ```
-| Parameter    | Description | Example |
-|--------------|-------------|---------|
-| `CHANNEL_ID` | YouTube channel ID | `UC_x5XG1OV2P6uZZ5FSM9Ttw` |
-| `CHANNEL_NAME` | YouTube channel name with teh `@` sign | `@java` |
+| Parameter      | Description                            | Example                    |
+|----------------|----------------------------------------|----------------------------|
+| `CHANNEL_ID`   | YouTube channel ID                     | `UC_x5XG1OV2P6uZZ5FSM9Ttw` |
+| `CHANNEL_NAME` | YouTube channel name with teh `@` sign | `@java`                    |
 
 
 ### Example Output
@@ -90,18 +90,37 @@ The application supports multiple output formats to suit different needs (you ca
 
 ### SIMPLE - Simple plain TXT format 
 ```
-TODO - simple TXT format
+-------------------------------------------
+YouTube Shorts for channel: @java
+-------------------------------------------
+1. URL[https://www.youtube.com/shorts/Yx2CbEIg9io] --- Sip Of Java: Using Records as Projections in JPA #shorts
+2. URL[https://www.youtube.com/shorts/wyL6o2mYKlM] --- Sip Of Java: Scanner Tokenize #shorts
+3. URL[https://www.youtube.com/shorts/D6C600mDZ0Y] --- Sip Of Java: Streams Post Java 8 Updates #shorts
+4. URL[https://www.youtube.com/shorts/yzeYOR0Eo8s] --- JFR Event Streaming
+5. URL[https://www.youtube.com/shorts/qO430sEb6as] --- Runtime Updates Post-JDK 11 - Sip of Java
+
 ```
 
 ### CSV Format
 ```csv
-TODO - CSV format
+URL,Title
+https://www.youtube.com/shorts/anPv9mqGztY,What is dependency injection - Cracking the Java Coding Interview #javalanguage #javacoding
+https://www.youtube.com/shorts/SLCp6PPSbUs,What is a distinct stream? - Cracking the Java Coding Interview#javalanguage #javacoding #javatips
+https://www.youtube.com/shorts/gGumOIMCPsg,Special Episode 300 - Cracking the Java Coding Interview #javalanguage #javacoding #javatips
+https://www.youtube.com/shorts/x3eqcdmxEzw,What is a cache miss?  - Cracking the Java Coding Interview #javalanguage #javacoding #javatips
 ```
 
 
 ### MARKDOWN Format
 ```md
-todo - MD format
+### YouTube Shorts for channel: ==@java==
+| # | TITLE | URL |
+|-----|-----------------|------------------|
+| 1. | Sip Of Java: Using Records as Projections in JPA #shorts | [https://www.youtube.com/shorts/Yx2CbEIg9io](https://www.youtube.com/shorts/Yx2CbEIg9io)|
+| 2. | Sip Of Java: Scanner Tokenize #shorts | [https://www.youtube.com/shorts/wyL6o2mYKlM](https://www.youtube.com/shorts/wyL6o2mYKlM)|
+| 3. | Sip Of Java: Streams Post Java 8 Updates #shorts | [https://www.youtube.com/shorts/D6C600mDZ0Y](https://www.youtube.com/shorts/D6C600mDZ0Y)|
+| 4. | JFR Event Streaming | [https://www.youtube.com/shorts/yzeYOR0Eo8s](https://www.youtube.com/shorts/yzeYOR0Eo8s)|
+| 5. | Runtime Updates Post-JDK 11 - Sip of Java | [https://www.youtube.com/shorts/qO430sEb6as](https://www.youtube.com/shorts/qO430sEb6as)|
 ```
 
 ## Contributing
