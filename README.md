@@ -1,6 +1,3 @@
-** WORK IN PROGRESS
-TODO - prepare README file
-
 # Shorts Scraper
 
 A simple Java application that allows you to get a list of all YouTube Shorts videos published by a given channel.
