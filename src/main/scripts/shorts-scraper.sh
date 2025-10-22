@@ -2,7 +2,7 @@
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-if [ -e app.properties ]
+if [[ -e app.properties ]]
 then
 	java -jar "$DIR/ShortsScraper.jar" "$@"
 else
