@@ -29,6 +29,10 @@ public class ShortsScraper {
     private static String apiKey;
     private static String outputFormatter;
 
+    private ShortsScraper() {
+        throw new IllegalStateException("Util class, don't instantiate");
+    }
+
     static void main(String[] args) throws IOException {
         initProperties();
 
@@ -108,7 +112,7 @@ public class ShortsScraper {
 
         if (conn.getResponseCode() != HttpURLConnection.HTTP_OK) {
             conn.disconnect();
-            throw new RuntimeException("HTTP error code: " + conn.getResponseCode());
+            throw new IOException("HTTP error code: " + conn.getResponseCode());
         }
 
         String jsonResponse = new InputStreamReader(conn.getInputStream()).readAllAsString();

@@ -6,6 +6,10 @@ public class OutputFormatterFactory {
     public static final String MARKDOWN = "MARKDOWN";
     public static final String CSV = "CSV";
 
+    private OutputFormatterFactory() {
+        throw new IllegalStateException("Util class, don't instantiate");
+    }
+
     public static ListOfShorts outputFormatter (String preferredFormat) {
         return switch (preferredFormat) {
             case null -> new SimpleTxtListOfShorts();

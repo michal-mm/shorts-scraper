@@ -12,7 +12,7 @@ public class CsvListOfShorts implements ListOfShorts{
             IO.println(String.join(",",
                     videoItem.url(),
                     // since we need CSV file, we will replace all commas in the title (igf they exist)
-                    videoItem.title().replaceAll(",", ";")));
+                    videoItem.title().replace(",", ";")));
         }
     }
 }

@@ -9,7 +9,7 @@ import java.nio.file.Paths;
 import java.util.List;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class JsonParserTest {
 
@@ -28,7 +28,7 @@ class JsonParserTest {
 
         List<VideoItem> result = JsonParser.parseVideosFromJsonResponse(jsonContent);
 
-        assertThat(result.size()).isEqualTo(expectedList.size());
+        assertThat(Integer.valueOf(result.size())).isEqualTo(Integer.valueOf(expectedList.size()));
         expectedList.forEach(video -> assertThat(result.contains(video)));
         result.forEach(video -> assertThat(expectedList.contains(video)));
     }

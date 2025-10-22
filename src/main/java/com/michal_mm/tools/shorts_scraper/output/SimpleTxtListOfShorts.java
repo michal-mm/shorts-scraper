@@ -7,14 +7,17 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class SimpleTxtListOfShorts implements ListOfShorts {
+
+    public static final String LONG_LINE = "-------------------------------------------";
+
     @Override
     public void formatResponse(List<VideoItem> shorts, String channelId) {
         AtomicInteger index = new AtomicInteger(1);
         Collections.reverse(shorts);
 
-        IO.println("-------------------------------------------");
+        IO.println(LONG_LINE);
         IO.println("YouTube Shorts for channel: " + channelId);
-        IO.println("-------------------------------------------");
+        IO.println(LONG_LINE);
 
         for (VideoItem videoShort : shorts) {
             IO.println(index.getAndIncrement() + ". URL[" +
@@ -22,6 +25,6 @@ public class SimpleTxtListOfShorts implements ListOfShorts {
                     videoShort.title());
         }
 
-        IO.println("-------------------------------------------");
+        IO.println(LONG_LINE);
     }
 }

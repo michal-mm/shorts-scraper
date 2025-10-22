@@ -9,10 +9,14 @@ import java.util.Properties;
 
 public class ConfigStore {
 
-    private static Properties CACHE;
+    private static Properties cache;
+
+    private ConfigStore() {
+        throw new IllegalStateException("Utility class, don't instantiate");
+    }
 
     private static void initCache() {
-        CACHE = new Properties();
+        cache = new Properties();
     }
 
     public static void loadConfiguration(String fileName) {
@@ -27,22 +31,22 @@ public class ConfigStore {
             loadFromFile(configFile, properties);
         }
 
-        CACHE.putAll(properties);
+        cache.putAll(properties);
     }
 
     public static String stringValue(String key) {
-        if (CACHE == null) {
+        if (cache == null) {
             throw new IllegalStateException("Call ConfigStore.loadConfiguration(aFileName) first");
         } else {
-            return CACHE.getProperty(key);
+            return cache.getProperty(key);
         }
     }
 
     public static String stringValueOrDefault(String key, String defValue) {
-        if (CACHE == null) {
+        if (cache == null) {
             throw new IllegalStateException("Call ConfigStore.loadConfiguration(aFileName) first");
         } else {
-            return CACHE.getProperty(key, defValue);
+            return cache.getProperty(key, defValue);
         }
     }
 

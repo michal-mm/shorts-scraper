@@ -8,6 +8,10 @@ import java.util.Objects;
 
 public class JsonParser {
 
+    private JsonParser() {
+        throw new IllegalStateException("Utility class, don't instantiate");
+    }
+
     public static List<VideoItem> parseVideosFromJsonResponse(String videosJsonStr) {
         Objects.requireNonNull(videosJsonStr, "JSON output string can't be null");
 
