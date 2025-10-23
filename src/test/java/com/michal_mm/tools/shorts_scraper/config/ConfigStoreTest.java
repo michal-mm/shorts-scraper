@@ -44,7 +44,6 @@ class ConfigStoreTest {
     void stringValue() {
         assertThat(ConfigStore.stringValue("GOOGLE_API_KEY")).isEqualTo("google.api.key.value");
         assertThat(ConfigStore.stringValue("output.formatter")).isEqualTo("CSV");
-        assertThat(ConfigStore.stringValue("output.formatter").length()).isEqualTo("CSV".length());
         assertThat(ConfigStore.stringValue("not.existing.value")).isNull();
     }
 
