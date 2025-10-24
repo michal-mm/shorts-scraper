@@ -1,3 +1,4 @@
+[![SonarCloud Analysis](https://github.com/michal-mm/shorts-scraper/actions/workflows/sonarcloud.yml/badge.svg)](https://github.com/michal-mm/shorts-scraper/actions/workflows/sonarcloud.yml)
 # Shorts Scraper
 
 A simple Java application that allows you to get a list of all YouTube Shorts videos published by a given channel.
