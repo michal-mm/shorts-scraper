@@ -2,6 +2,7 @@ package com.michal_mm.tools.shorts_scraper.output;
 
 import org.junit.jupiter.api.Test;
 
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 class OutputFormatterFactoryTest {
@@ -34,5 +35,16 @@ class OutputFormatterFactoryTest {
     void testProvidedNullFormatter_andGetSimpleFormatter() {
         assertThat(OutputFormatterFactory.outputFormatter(null))
                 .isExactlyInstanceOf(SimpleTxtListOfShorts.class);
+    }
+
+    @Test
+    void testIllegalConstructorCall_exceptionThrown() throws NoSuchMethodException {
+        var constructor = OutputFormatterFactory.class.getDeclaredConstructor();
+
+        constructor.setAccessible(true);
+
+        assertThatThrownBy(constructor::newInstance)
+                .rootCause()
+                .isExactlyInstanceOf(IllegalStateException.class);
     }
 }
