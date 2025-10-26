@@ -8,6 +8,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -55,5 +56,16 @@ class JsonParserTest {
         String expectedId = "UCmRtPmgnQ04CMUpSUqPfhxQ";
 
         assertThat(JsonParser.parseChannelIdFromJsonResponse(jsonContent)).isEqualTo(expectedId);
+    }
+
+    @Test
+    void testPrivateConstructor_exceptionIsThrown() throws NoSuchMethodException {
+        var constructor = JsonParser.class.getDeclaredConstructor();
+
+        constructor.setAccessible(true);
+
+        assertThatThrownBy(constructor::newInstance)
+                .rootCause()
+                .isExactlyInstanceOf(IllegalStateException.class);
     }
 }
