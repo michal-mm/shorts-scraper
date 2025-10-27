@@ -142,6 +142,7 @@ This tool is for educational and research purposes only. Please respect YouTube'
 ## Acknowledgments
 
 - YouTube Data API v3 by Google
+- Zero Dependency Configuration Utility idea by Adam Bien for properties loading [zcfg GitHub repo](https://github.com/AdamBien/zcfg) 
 - All contributors to this project
 
 ---
