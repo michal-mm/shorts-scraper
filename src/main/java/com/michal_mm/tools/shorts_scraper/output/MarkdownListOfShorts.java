@@ -19,7 +19,7 @@ public class MarkdownListOfShorts implements ListOfShorts{
 
         for(VideoItem video : shorts) {
             IO.println("| " + index.getAndIncrement() + ". | " +
-                    video.title() + " | " +
+                    video.titleMd() + " | " +
                     "[" + video.url() + "](" + video.url() + ")|");
         }
     }
