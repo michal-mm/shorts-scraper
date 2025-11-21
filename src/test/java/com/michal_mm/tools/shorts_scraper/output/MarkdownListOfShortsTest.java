@@ -21,4 +21,15 @@ class MarkdownListOfShortsTest {
                         List.of(new VideoItem("video-id1", "video title")),
                         "Channel ID"));
     }
+
+    @Test
+    void videoDescriptionHasPipeChars_produceCorrectMDTable() {
+        var mdListOfShorts = OutputFormatterFactory.outputFormatter(OutputFormatterFactory.MARKDOWN);
+        var vi = new VideoItem("video-id1", "When \"||\" in if Not Compiles #java #shorts");
+
+        assertThat(mdListOfShorts).isExactlyInstanceOf(MarkdownListOfShorts.class);
+        assertDoesNotThrow( () -> mdListOfShorts
+                .formatResponse(
+                        List.of(vi), "channel ID"));
+    }
 }
