@@ -17,5 +17,6 @@ class ShortsScraperTest {
     @Test
     void testSimpleWithHttp400() {
         assertThrows(IOException.class, () -> ShortsScraper.main(new String[] {"@java"}));
+        assertThrows(IOException.class, () -> ShortsScraper.main(new String[] {"UCksTNgiRyQGwi2ODBie8HdA"}));
     }
 }
