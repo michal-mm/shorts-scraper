@@ -37,8 +37,7 @@ public class ShortsScraper {
         initProperties();
 
         if (args.length < 1) {
-            IO.println("Usage: java ShortsScraper <channel_id>");
-            return;
+            throw new IllegalStateException("Usage: java ShortsScraper <channel_id>");
         }
 
         String channelId = args[0];
