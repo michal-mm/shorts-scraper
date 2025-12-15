@@ -64,4 +64,26 @@ class HttpRequestGetTest {
             assertThat(HttpRequestGet.getChannelIdFromHandle(channelIdWithoutAtSign, apiKey)).isEqualTo(expectedIdFromFile);
         }
     }
+
+    @Test
+    void testGetAllShorts() throws IOException {
+        var path = Paths.get("src", "test", "resources", "get3ShortItemsForChannel.json");
+        assertTrue(Files.exists(path));
+
+        var jsonContent = Files.readString(path);
+
+        var channelId = "@java";
+        var apiKey = "YT_API_KEY_123";
+
+        try(var mock = Mockito.mockStatic(HttpRequestGet.class, Mockito.CALLS_REAL_METHODS)) {
+            mock.when(() -> HttpRequestGet.fetchJson(any()))
+                    .thenReturn(jsonContent)
+                    .thenReturn(jsonContent.replaceFirst("nextPageToken", "-----"));
+
+            assertThat(HttpRequestGet.fetchAllShorts(channelId, apiKey).size())
+                    .isEqualTo(6);
+
+        }
+
+    }
 }
