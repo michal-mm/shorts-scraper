@@ -9,7 +9,7 @@ import java.nio.file.Paths;
 
 import static com.michal_mm.tools.shorts_scraper.http.HttpRequestGet.PLAYLIST_ITEMS_ENDPOINT;
 import static com.michal_mm.tools.shorts_scraper.http.HttpRequestGet.YOUTUBE_API_BASE;
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
 
@@ -20,13 +20,12 @@ class HttpRequestGetTest {
         var channelId = "YT_CHANNEL_ID_123";
         var playlistId = "YT_PLAYLIST_ID_456";
         var apiKey = "YT_API_KEY_999";
-        String pageToken = null;
         var expected = YOUTUBE_API_BASE + PLAYLIST_ITEMS_ENDPOINT +
                 "&channelId=" + channelId +
                 "&playlistId=" + playlistId +
                 "&order=date&type=video&key=" + apiKey;
 
-        assertThat(HttpRequestGet.buildApiUrl(channelId, playlistId, pageToken, apiKey)).isEqualTo(expected);
+        assertThat(HttpRequestGet.buildApiUrl(channelId, playlistId, null, apiKey)).isEqualTo(expected);
     }
 
     @Test
@@ -80,8 +79,7 @@ class HttpRequestGetTest {
                     .thenReturn(jsonContent)
                     .thenReturn(jsonContent.replaceFirst("nextPageToken", "-----"));
 
-            assertThat(HttpRequestGet.fetchAllShorts(channelId, apiKey).size())
-                    .isEqualTo(6);
+            assertThat(HttpRequestGet.fetchAllShorts(channelId, apiKey)).hasSize(6);
 
         }
 

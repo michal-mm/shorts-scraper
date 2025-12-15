@@ -17,6 +17,8 @@ import static com.michal_mm.tools.shorts_scraper.json_parser.JsonParser.*;
 
 public class HttpRequestGet {
 
+    private HttpRequestGet(){}
+
     public static final String YOUTUBE_API_BASE = "https://www.googleapis.com/youtube/v3";
     public static final String PLAYLIST_ITEMS_ENDPOINT = "/playlistItems?part=snippet&maxResult=50";
 
