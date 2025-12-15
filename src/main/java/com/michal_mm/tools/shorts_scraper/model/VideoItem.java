@@ -6,7 +6,9 @@ public record VideoItem(String videoId, String title) {
     }
 
     public String titleCsv() {
-        return title().replace(",", ";");
+        return title()
+                .replace(",", ";")
+                .replace("\\.", ";");
     }
 
     public String titleMd() {
